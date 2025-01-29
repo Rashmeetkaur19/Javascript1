@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Grades</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    font-size: 16px;
+    color: #333;
+}
+
+.invalid-input {
+    color: red;
+    font-weight: bold;
+}
+
+.grade {
+    font-weight: bold;
+}
+
+.grade.A {
+    color: green;
+}
+
+.grade.B {
+    color: blue;
+}
+
+.grade.C {
+    color: orange;
+}
+
+.grade.D {
+    color: brown;
+}
+
+.grade.F {
+    color: red;
+}
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <script>
+            // Step 1: Ask for the number of courses
+            let numOfCourses = prompt("How many courses did you finish?", "0");
+            numOfCourses = parseInt(numOfCourses);
+
+            // Check for invalid input
+            if (isNaN(numOfCourses) || numOfCourses <= 0) {
+                document.write("<p class='invalid-input'>Invalid Input!</p>");
+            } else {
+                // Step 2: Collect course marks
+                let courseMarks = [];
+                for (let i = 1; i <= numOfCourses; i++) {
+                    let mark = prompt("Enter your mark for course " + i);
+                    mark = parseFloat(mark);
+                    courseMarks.push(mark);
+                }
+
+                // Step 3: Calculate the total and average
+                let total = 0;
+                for (let i = 0; i < courseMarks.length; i++) {
+                    total += courseMarks[i];
+                }
+
+                let average = total / courseMarks.length;
+                average = average.toFixed(2); // Round to 2 decimal places
+
+                // Step 4: Output the average and grade
+                document.write("<h1>Your final results</h1>");
+                document.write("<p>Your final average is " + average + ". ");
+
+                if (average >= 90 && average <= 100) {
+                    document.write("<p class='grade A'>Your grade is A+</p>");
+                } else if (average >= 80 && average < 90) {
+                    document.write("<p class='grade B'>Your grade is B</p>");
+                } else if (average >= 70 && average < 80) {
+                    document.write("<p class='grade C'>Your grade is C</p>");
+                } else if (average >= 60 && average < 70) {
+                    document.write("<p class='grade D'>Your grade is D</p>");
+                } else if (average < 60) {
+                    document.write("<p class='grade F'>Your grade is F</p>");
+                } else {
+                    document.write("<p class='invalid-input'>Sorry, all the marks have to be from minimum 0 to maximum 100!</p>");
+                }
+            }
+        </script>
+    </div>
+</body>
+
+</html>
